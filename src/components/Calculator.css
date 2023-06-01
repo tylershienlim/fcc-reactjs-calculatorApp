@@ -1,0 +1,23 @@
+.calculatorFrame {
+    width: 502px;
+    height: 663px;
+    left: 1029px;
+    top: 388px;
+    background: #171219;
+  }
+
+.calculatorDisplay {
+    width: 501px;
+    height: 184px;
+    left: 1px;
+    top: -2px;
+    background-color: blue;
+  }
+  
+  .calculatorButtons {
+    width: 501px;
+    height: 481px;
+    left: 1px;
+    top: 182px;
+    background-color: white;
+  }
