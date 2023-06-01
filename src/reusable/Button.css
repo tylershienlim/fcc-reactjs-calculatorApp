@@ -1,0 +1,13 @@
+button {
+    width: 82px;
+    height: 76px;
+    border-radius: 50%;
+}
+
+.buttonNumber {
+    background-color:#867367;
+}
+
+.buttonOperator {
+    background-color:#F0803C;
+}

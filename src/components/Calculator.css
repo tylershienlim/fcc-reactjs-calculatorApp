@@ -11,7 +11,7 @@
     height: 184px;
     left: 1px;
     top: -2px;
-    background-color: blue;
+    background-color: #544D4D;
   }
   
   .calculatorButtons {
@@ -19,5 +19,5 @@
     height: 481px;
     left: 1px;
     top: 182px;
-    background-color: white;
+    background-color: #171219;;
   }
