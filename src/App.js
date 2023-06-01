@@ -6,10 +6,12 @@ function App() {
     <div className="App">
       <div className='container'>
         <Calculator/>
-        <div className='designText'>
-          Designed and coded by @tylershienlim
-        </div>
       </div>
+        <div className='designText'>
+          Designed and coded by
+          <br></br>
+          @tylershienlim
+        </div>
     </div>
   );
 }

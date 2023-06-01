@@ -1,10 +1,12 @@
 .buttonZero {
+    position: relative;
     width: 213px;
     height: 76px;
     background-color: #867367;
 }
 
 .buttonClear {
+    position: relative;
     width: 310px;
     height: 76px;
     background-color:  #E15656;
