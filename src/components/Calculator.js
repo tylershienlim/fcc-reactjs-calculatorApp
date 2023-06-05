@@ -5,22 +5,30 @@ import './Calculator.css'
 
 function Calculator() {
   const [display, setDisplay] = useState([0]);
-  let displayList = [];
+  const [decimal, setDecimal] = useState(false);
+  const [formula, setFormula] = useState([0]);
   
   const handleButton = (e) => {
+    console.log(decimal);
     e.preventDefault();
     if (e.target.value === "AC") {
-      displayList.length = 0;
+      //resets decimal to false so decimal can be used again
+      setDecimal(false);
       setDisplay([0]);
-      console.log(display);
+      setFormula([]);
+      //console.log(display);
     } else {
-      if (display[0] === 0 ) {
+      if (display[0] === 0) {
         setDisplay([e.target.value]);
-      } else {
+      } else { 
         setDisplay(oldArray => [...oldArray, e.target.value]);
       }
     }
-    console.log(display);
+  }
+
+  const handleEquals = (e) => {
+    e.preventDefault();
+    alert(eval(display.join("")));
   }
 
   return (
@@ -31,7 +39,7 @@ function Calculator() {
         <div className='calculatorButtons'>
           <div>
             <button className='Clear' value="AC" onClick={handleButton}>AC</button>
-            <button className='Operator' id='divide' value="/">÷</button>
+            <button className='Operator' id='divide' value="/" onClick={handleButton}>÷</button>
           </div>
           
           <div>
@@ -52,13 +60,13 @@ function Calculator() {
             <button id='one' value="1" onClick={handleButton}>1</button>
             <button id='two' value="2" onClick={handleButton}>2</button>
             <button id='three' value="3" onClick={handleButton}>3</button>
-            <button className='Operator' id='add' value="+">+</button>
+            <button className='Operator' id='add' value="+" onClick={handleButton}>+</button>
           </div>
 
           <div>
             <button className='Zero' value="0" onClick={handleButton}>0</button>
-            <button id='decimal' value="." onClick={handleButton}>.</button>
-            <button className='Operator' id='equals' value="=">=</button>
+            <button id='decimal' value="." >.</button>
+            <button className='Operator' id='equals' value="=" onClick={handleEquals}>=</button>
           </div>
         </div>
     </div>
