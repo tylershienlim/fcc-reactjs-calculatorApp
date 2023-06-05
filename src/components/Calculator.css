@@ -21,3 +21,29 @@
     top: 182px;
     background-color: #171219;;
   }
+
+button {
+    position: relative;
+    width: 82px;
+    height: 76px;
+    border-radius: 50%;
+    background-color:#867367;
+}
+
+.Operator {
+    background-color:#F0803C;
+}
+
+.Zero {
+  position: relative;
+  width: 213px;
+  height: 76px;
+  background-color: #867367;
+}
+
+.Clear {
+  position: relative;
+  width: 310px;
+  height: 76px;
+  background-color:  #E15656;
+}

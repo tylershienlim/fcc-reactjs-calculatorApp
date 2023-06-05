@@ -1,43 +1,53 @@
 import React from 'react'
+import { useState } from 'react'
 import './Calculator.css'
-import Button from '../reusable/Button';
-import LongButton from '../reusable/LongButton';
 
 function Calculator() {
+  const [display, setDisplay] = useState("0");
+
+  const handleButton = (e) => {
+    e.preventDefault();
+    if (e.target.value === "AC") {
+      setDisplay("0");
+    } else {
+      setDisplay(e.target.value);
+    }
+  }
+
   return (
     <div className='calculatorFrame'>
-        <div id='display' className='calculatorDisplay'></div>
+        <div id='display' className='calculatorDisplay'>{display}</div>
         <div className='calculatorButtons'>
           <div>
-            <LongButton size='Clear' value="AC">AC</LongButton>
-            <Button color='Operator' id='divide' value="÷">÷</Button>
+            <button className='Clear' value="AC" onClick={handleButton}>AC</button>
+            <button className='Operator' id='divide' value="/">÷</button>
           </div>
           
           <div>
-            <Button id='seven' value="7">7</Button>
-            <Button id='eight' value="8">8</Button>
-            <Button id='nine' value="9">9</Button>
-            <Button color='Operator' id='multiply' value="×">×</Button>
+            <button id='seven' value="7" onClick={handleButton}>7</button>
+            <button id='eight' value="8" onClick={handleButton}>8</button>
+            <button id='nine' value="9" onClick={handleButton}>9</button>
+            <button className='Operator' id='multiply' value="*">×</button>
           </div>
 
           <div>
-            <Button id='four' value="4">4</Button>
-            <Button id='five' value="5">5</Button>
-            <Button id='six' value="6">6</Button>
-            <Button color='Operator' id='subtract' value="-">-</Button>
+            <button id='four' value="4" onClick={handleButton}>4</button>
+            <button id='five' value="5" onClick={handleButton}>5</button>
+            <button id='six' value="6" onClick={handleButton}>6</button>
+            <button className='Operator' id='subtract' value="-">-</button>
           </div>
 
           <div>
-            <Button id='one' value="1">1</Button>
-            <Button id='two' value="2">2</Button>
-            <Button id='three' value="3">3</Button>
-            <Button color='Operator' id='add' value="+">+</Button>
+            <button id='one' value="1" onClick={handleButton}>1</button>
+            <button id='two' value="2" onClick={handleButton}>2</button>
+            <button id='three' value="3" onClick={handleButton}>3</button>
+            <button className='Operator' id='add' value="+">+</button>
           </div>
 
           <div>
-            <LongButton id='zero' value="0">0</LongButton>
-            <Button id='decimal' value=".">.</Button>
-            <Button color='Operator' id='equals' value="=">=</Button>
+            <button className='Zero' value="0" onClick={handleButton}>0</button>
+            <button id='decimal' value="." onClick={handleButton}>.</button>
+            <button className='Operator' id='equals' value="=">=</button>
           </div>
         </div>
     </div>
