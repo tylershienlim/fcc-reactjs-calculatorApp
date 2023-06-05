@@ -1,22 +1,26 @@
 .calculatorFrame {
-    width: 502px;
-    height: 663px;
+    width: 500px;
+    height: 650px;
     left: 1029px;
     top: 388px;
     background: #171219;
   }
 
 .calculatorDisplay {
-    width: 501px;
-    height: 184px;
-    left: 1px;
-    top: -2px;
+    width: 500px;
+    height: 150px;
     background-color: #544D4D;
   }
   
+  #display {
+  text-align: right;
+  font-family:'digital', 'monospace';
+  font-size: 60px;
+}
+  
   .calculatorButtons {
-    width: 501px;
-    height: 481px;
+    width: 500px;
+    height: 500px;
     left: 1px;
     top: 182px;
     background-color: #171219;;
@@ -24,10 +28,11 @@
 
 button {
     position: relative;
-    width: 82px;
-    height: 76px;
-    border-radius: 50%;
-    background-color:#867367;
+    width: 125px;
+    height: 100px;
+    color: #FFFFFF;
+    font-size: 40px;
+    background-color:#2C2825;
 }
 
 .Operator {
@@ -36,14 +41,14 @@ button {
 
 .Zero {
   position: relative;
-  width: 213px;
-  height: 76px;
-  background-color: #867367;
+  width: 250px;
+  height: 100px;
+  background-color: #2C2825;
 }
 
 .Clear {
   position: relative;
-  width: 310px;
-  height: 76px;
+  width: 375px;
+  height: 100px;
   background-color:  #E15656;
 }

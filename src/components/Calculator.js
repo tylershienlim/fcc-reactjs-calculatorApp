@@ -1,22 +1,33 @@
 import React from 'react'
 import { useState } from 'react'
+import * as Math from 'mathjs'
 import './Calculator.css'
 
 function Calculator() {
-  const [display, setDisplay] = useState("0");
-
+  const [display, setDisplay] = useState([0]);
+  let displayList = [];
+  
   const handleButton = (e) => {
     e.preventDefault();
     if (e.target.value === "AC") {
-      setDisplay("0");
+      displayList.length = 0;
+      setDisplay([0]);
+      console.log(display);
     } else {
-      setDisplay(e.target.value);
+      if (display[0] === 0 ) {
+        setDisplay([e.target.value]);
+      } else {
+        setDisplay(oldArray => [...oldArray, e.target.value]);
+      }
     }
+    console.log(display);
   }
 
   return (
     <div className='calculatorFrame'>
-        <div id='display' className='calculatorDisplay'>{display}</div>
+        <div id='display' className='calculatorDisplay'>
+          <div id='display'>{display}</div>
+        </div>
         <div className='calculatorButtons'>
           <div>
             <button className='Clear' value="AC" onClick={handleButton}>AC</button>
