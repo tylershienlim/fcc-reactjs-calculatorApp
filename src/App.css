@@ -28,3 +28,14 @@
 
   color: #FFFFFF;
 }
+
+a {
+  font-family: "Share Tech Mono", sans;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 48px;
+  line-height: 58px;
+  text-align: center;
+
+  color: #FFFFFF;
+}
