@@ -1,6 +1,5 @@
 import React from 'react'
 import { useState } from 'react'
-import * as Math from 'mathjs'
 import './Calculator.css'
 
 function Calculator() {
@@ -15,30 +14,38 @@ function Calculator() {
       //resets decimal to false so decimal can be used again
       setDecimal(false);
       setDisplay([0]);
-      setFormula([]);
-      //console.log(display);
+      setFormula([0]);
     } else {
       if (display[0] === 0) {
-        setDisplay([e.target.value]);
+        //calculator cannot start with multiple zeros
+        if (e.target.value === "0"){
+          return;
+        } else {
+          setDisplay([e.target.value]);
+          setFormula([e.target.value]);
+        }
       } else { 
         setDisplay(oldArray => [...oldArray, e.target.value]);
+        setFormula(oldArray => [...oldArray, e.target.value]);
       }
     }
   }
 
   const handleEquals = (e) => {
     e.preventDefault();
-    alert(eval(display.join("")));
+    let result = eval(formula.join(""));
+    setFormula([result]);
+    setDisplay([result]);
   }
 
   return (
     <div className='calculatorFrame'>
-        <div id='display' className='calculatorDisplay'>
+        <div className='calculatorDisplay'>
           <div id='display'>{display}</div>
         </div>
         <div className='calculatorButtons'>
           <div>
-            <button className='Clear' value="AC" onClick={handleButton}>AC</button>
+            <button id='clear' className='Clear' value="AC" onClick={handleButton}>AC</button>
             <button className='Operator' id='divide' value="/" onClick={handleButton}>÷</button>
           </div>
           
@@ -46,14 +53,14 @@ function Calculator() {
             <button id='seven' value="7" onClick={handleButton}>7</button>
             <button id='eight' value="8" onClick={handleButton}>8</button>
             <button id='nine' value="9" onClick={handleButton}>9</button>
-            <button className='Operator' id='multiply' value="*">×</button>
+            <button className='Operator' id='multiply' value="*" onClick={handleButton}>×</button>
           </div>
 
           <div>
             <button id='four' value="4" onClick={handleButton}>4</button>
             <button id='five' value="5" onClick={handleButton}>5</button>
             <button id='six' value="6" onClick={handleButton}>6</button>
-            <button className='Operator' id='subtract' value="-">-</button>
+            <button className='Operator' id='subtract' value="-" onClick={handleButton}>-</button>
           </div>
 
           <div>
@@ -64,7 +71,7 @@ function Calculator() {
           </div>
 
           <div>
-            <button className='Zero' value="0" onClick={handleButton}>0</button>
+            <button id='zero' className='Zero' value="0" onClick={handleButton}>0</button>
             <button id='decimal' value="." >.</button>
             <button className='Operator' id='equals' value="=" onClick={handleEquals}>=</button>
           </div>
