@@ -6,18 +6,16 @@ function Calculator() {
   const [display, setDisplay] = useState([0]);
   const [decimal, setDecimal] = useState(false);
   const [formula, setFormula] = useState([]);
-  const [operator, setOperator] = useState(false);
-  const operatorArray = ["+", "-", "*", "/"];
+  const [lastUsed, setLastUsed] = useState("");
+  const isOperator = /[-+x/]/;
+  const ops = /[+x/]/;
   
   
   const handleClear = () => {
-    //resets decimal to false so decimal can be used again
     setDecimal(false);
-    setOperator(false);
+    setLastUsed("");
     setDisplay([0]);
     setFormula([]);
-    console.log("AC");
-    console.log(formula);
   }
   
   const handleDecimal = (e) => {
@@ -29,26 +27,31 @@ function Calculator() {
   }
 
   const handleOperator = (e) => {
-    setDecimal(false);
-    setOperator(true);
+    //if lastUsed is either (+, *, /), change lastUsed in formula to that operator
+    if (ops.test(lastUsed)){
+      setFormula((oldArray) => {
+        const newArray = [...oldArray];
+        newArray[newArray.length - 1] = e.target.value;
+        return newArray;
+      });
+    } else {
+      setFormula(oldArray => [...oldArray, e.target.value]);
+    }
     setDisplay([e.target.value]);
-    setFormula(oldArray => [...oldArray, e.target.value]);
-    //console.log("operator:, ", decimal);
+    setLastUsed(e.target.value);
+    setDecimal(false);
   }
 
   const handleZero = (e) => {
-      if (display[0] === 0 && e.target.value === "0") {
-        //calculator cannot start with multiple zeros
+      if (display[0] === 0) {
         return;
       } else { 
-        if (operator){
-          setOperator(false);
+        if (isOperator.test(lastUsed)){
           setDisplay([e.target.value]);
-          setFormula(oldArray => [...oldArray, e.target.value]);
         } else {
           setDisplay(oldArray => [...oldArray, e.target.value]);
-          setFormula(oldArray => [...oldArray, e.target.value]);
         }
+        setFormula(oldArray => [...oldArray, e.target.value]);
     }
   }
 
@@ -56,42 +59,30 @@ function Calculator() {
     if (decimal) {
       setDisplay(oldArray => [...oldArray, e.target.value]);
       setFormula(oldArray => [...oldArray, e.target.value]);
-      console.log(formula);
     } else {
-      if (operator) {
-        setOperator(false);
+      if (isOperator.test(lastUsed)) {
         setDisplay([e.target.value]);
         setFormula(oldArray => [...oldArray, e.target.value]);
-        console.log(formula);
       } else {
         if (display[0] === 0) {
           setDisplay([e.target.value]);
           setFormula([e.target.value]);
-          console.log(formula);
         } else {
           setDisplay(oldArray => [...oldArray, e.target.value]);
           setFormula(oldArray => [...oldArray, e.target.value]);
-          console.log(formula);
         }
       }
     }
+    setLastUsed(e.target.value);
   }
 
   const handleEquals = () => {
-    console.log(formula);
-    let lastIndex = formula.indexOf(formula[formula.length-1]);
-    if (operatorArray.includes(formula[lastIndex])){
+    if (isOperator.test(lastUsed)){
       formula.pop();
-      let result = parseFloat(eval(formula.join("")).toFixed(7));
-      console.log(result);
-      setFormula([result]);
-      setDisplay([result]);
-    } else {
-      let result = parseFloat(eval(formula.join("")).toFixed(7));
-      console.log(result);
-      setFormula([result]);
-      setDisplay([result]);
     }
+    let result = parseFloat(eval(formula.join("")).toFixed(7));
+    setFormula([result]);
+    setDisplay([result]);
   }
 
   return (

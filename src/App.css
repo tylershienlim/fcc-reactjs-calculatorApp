@@ -1,41 +1,19 @@
 .App{
   overflow: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   width: 100vw;
   height: 100vh;
   background-color: #310D20;
 }
 
-.container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
-}
-
 .designText {
-  position: absolute;
-  width: 539px;
-  height: 116px;
-  left: 1010px;
-  top: 1131px;
-
   font-family: "Share Tech Mono", sans;
   font-style: normal;
   font-weight: 400;
   font-size: 48px;
   line-height: 58px;
   text-align: center;
-
-  color: #FFFFFF;
-}
-
-a {
-  font-family: "Share Tech Mono", sans;
-  font-style: normal;
-  font-weight: 400;
-  font-size: 48px;
-  line-height: 58px;
-  text-align: center;
-
   color: #FFFFFF;
 }
