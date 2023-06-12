@@ -112,8 +112,6 @@ function Calculator() {
       formula.pop();
     }
     let result = parseFloat(eval(formula.join("")).toFixed(7));
-    console.log(formula);
-    console.log(result);
     setFormula([result]);
     setDisplay([result]);
   }
